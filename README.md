@@ -1,4 +1,4 @@
-# DETTROIN-INT---VasantValleySchool
+# DETTROIN-INT-Prakash-Website
 
 A modern, responsive, and feature-rich redesign of the **Vasant Valley School** website, built using the full **MERN Stack (MongoDB, Express, React, Node.js)** and styled with **Tailwind CSS**.
 
@@ -6,85 +6,113 @@ A modern, responsive, and feature-rich redesign of the **Vasant Valley School** 
 
 ## Submission Details
 
-- **Full Name:** Candidate Name
+- **Full Name:** Prakash Jha
 - **Intern ID:** DETTROIN-INT-2026-07
-- **Email Address:** candidate.email@example.com
-- **GitHub Username:** candidate_username
+- **GitHub Username:** 23prakashjha
+- **Repository:** `DETTROIN-INT-Prakash-Website`
+- **Live Demo:** [View Deployment](https://github.com/23prakashjha/DETTROIN-INT-Prakash-Website)
 - **Selected Website:** [Vasant Valley School](https://www.vasantvalley.org/)
-- **Live Demo Link:** [Vercel Deployment Link](https://dettroin-int-vasantvalley.vercel.app/)
-- **Repository Name:** `DETTROIN-INT---VasantValleySchool`
 
 ---
 
-## Technologies Used
+## Tech Stack
 
-- **Frontend:**
-  - React.js (Vite configuration)
-  - Tailwind CSS (Premium branding palettes & animations)
-  - Lucide React (Sleek UI icons)
-  - React Router DOM (Single-page app routing)
-- **Backend:**
-  - Node.js & Express.js
-  - JSON Web Tokens (JWT) for secure authentication
-  - Bcrypt.js for pre-save password hashing
-- **Database:**
-  - MongoDB & Mongoose schemas
+| Layer | Technologies |
+|---|---|
+| **Frontend** | React 19, Vite, Tailwind CSS, Lucide React, React Router DOM |
+| **Backend** | Node.js, Express.js, JWT Auth, Bcrypt.js |
+| **Database** | MongoDB, Mongoose |
+| **Build** | PostCSS, Autoprefixer |
 
 ---
 
-## Key Improvements Made
+## Key Improvements
 
-1. **Brand-Specific Visual Theme:** Crafted a custom theme centered around Vasant Valley's identity, featuring deep crimson reds, gold accents, dark slates, and clean typography (`Inter` & `Outfit`), avoiding generic styles.
-2. **Dynamic Live Announcements Ticker:** Implemented a marquee banner at the top of the homepage that scrolls through active notice board headlines queried directly from the database.
-3. **MERN Interactive Admissions Intake:** Fully redesigned the Admissions registration flow. Prospective parents can submit student inquiries, which are validated and saved to the MongoDB database in real time.
-4. **Role-Based Portal Dashboards:**
-   - **Student Dashboard:** View general notices and access personalized report cards with subjects, grades, and faculty remarks.
-   - **Teacher Dashboard:** Input new student grades, delete past grade cards, write and broadcast announcements, and monitor notice logs.
-   - **Admin Dashboard:** Review overall system statistics, examine active admissions inquiry entries, and approve/reject applications with status update tags.
-5. **Autoseeding Database Setup:** To simplify evaluation, running the server automatically seeds default portal accounts (`admin@vasantvalley.edu`, `teacher@vasantvalley.edu`, `student@vasantvalley.edu`) and dummy announcements/grade cards.
-6. **Graceful Database Fallbacks:** Added try/catch safeguards inside the frontend pages; if the backend MongoDB is offline, it utilizes interactive local mock content so reviewers can inspect UI transitions instantly.
+1. **Brand-Specific Visual Theme:** Custom theme using Vasant Valley's identity — deep crimson red, gold accents, dark slate backgrounds, and `Inter` + `Outfit` typography.
+2. **Custom Favicon:** School graduation cap logo in brand colors replacing the default Vite icon.
+3. **Hero Slideshow:** Auto-sliding 3-image carousel with smooth crossfade transitions.
+4. **Animated Counters:** Stats section with animated number counters (1:9 ratio, 100% result rate, 30+ activities, 8-acre campus).
+5. **Gallery with Lightbox:** 18-item gallery with category filters, masonry/grid toggle, keyboard-navigable lightbox modal, and featured badges.
+6. **Dynamic Announcements Ticker:** Live marquee banner pulling active notices from the database.
+7. **Role-Based Portal Dashboards:**
+   - **Student Dashboard:** View notices, personalized report cards with grades and remarks.
+   - **Teacher Dashboard:** Input grades, delete records, broadcast announcements.
+   - **Admin Dashboard:** System stats, admissions review, approve/reject applications.
+8. **MERN Admissions Intake:** Full registration flow with real-time MongoDB persistence.
+9. **Autoseeding Database:** Server auto-seeds default accounts and dummy data on startup.
+10. **Graceful Fallbacks:** If MongoDB is offline, frontend uses local mock content for seamless UI review.
+11. **23 High-Quality School Images:** Campus, labs, sports, library, art studio, auditorium, and more.
+12. **Scroll Animations:** Smooth reveal-on-scroll effects, glassmorphism navbar, staggered link animations.
+
+---
+
+## Pages
+
+| Page | Description |
+|---|---|
+| **Home** | Hero slideshow, "Why Choose Us", Vision & Core Values, animated counters, campus gallery, testimonials, academic programs, recent news |
+| **About** | School history, mission, leadership |
+| **Academics** | Curriculum overview, faculty info |
+| **Admissions** | Online admission form with MERN backend |
+| **Contact** | Contact form, school address, map |
+| **Gallery** | 18 items, 5 categories, lightbox, layout toggle |
+| **Infrastructure** | Campus facilities showcase |
+| **International Curriculum** | IGCSE/Cambridge program details |
+| **News & Events** | 7 events with unique images, date badges, categories |
+| **Portal** | Student/Teacher/Admin login |
+| **Dashboard** | Role-based dashboards with interactive features |
+| **Vision & Philosophy** | School values and educational philosophy |
 
 ---
 
 ## Project Structure
 
 ```
-DETTROIN-INT---SchoolWebsite/
+DETTROIN-INT-Prakash-Website/
 ├── backend/
 │   ├── middleware/
-│   │   └── auth.js
+│   │   └── auth.js              # JWT verification middleware
 │   ├── models/
-│   │   ├── User.js
-│   │   ├── Admission.js
-│   │   ├── Notice.js
-│   │   └── Grade.js
+│   │   ├── User.js              # Student/Teacher/Admin schema
+│   │   ├── Admission.js         # Admission inquiry schema
+│   │   ├── Notice.js            # Notice board schema
+│   │   └── Grade.js             # Report card schema
 │   ├── routes/
-│   │   ├── auth.js
-│   │   ├── admissions.js
-│   │   ├── notices.js
-│   │   └── grades.js
-│   ├── .env
-│   ├── server.js
+│   │   ├── auth.js              # Login/Register endpoints
+│   │   ├── admissions.js        # Admission CRUD
+│   │   ├── notices.js           # Notice CRUD
+│   │   └── grades.js            # Grade CRUD
+│   ├── server.js                # Express entry point + autoseed
 │   └── package.json
 └── frontend/
     ├── public/
+    │   ├── favicon.svg           # VVS graduation cap logo
+    │   └── *.jpg / *.png         # 23 school images
     ├── src/
     │   ├── components/
-    │   │   ├── Navbar.jsx
-    │   │   ├── Footer.jsx
-    │   │   └── GlassCard.jsx
+    │   │   ├── Navbar.jsx        # Glassmorphism nav with dropdown
+    │   │   ├── Footer.jsx        # Newsletter CTA, social links
+    │   │   ├── GlassCard.jsx     # Reusable glass effect card
+    │   │   └── Skeleton.jsx      # Loading skeleton component
     │   ├── pages/
-    │   │   ├── Home.jsx
+    │   │   ├── Home.jsx          # Hero, counters, testimonials
+    │   │   ├── Gallery.jsx       # Lightbox gallery with filters
+    │   │   ├── NewsEvents.jsx    # News cards with images
+    │   │   ├── Dashboard.jsx     # Role-based dashboards
+    │   │   ├── Portal.jsx        # Login page
+    │   │   ├── About.jsx
     │   │   ├── Academics.jsx
     │   │   ├── Admissions.jsx
-    │   │   ├── Portal.jsx
-    │   │   └── Dashboard.jsx
+    │   │   ├── Contact.jsx
+    │   │   ├── Infrastructure.jsx
+    │   │   ├── InternationalCurriculum.jsx
+    │   │   └── VisionPhilosophy.jsx
     │   ├── services/
-    │   │   └── api.js
-    │   ├── App.jsx
+    │   │   └── api.js            # Axios API wrapper
+    │   ├── App.jsx               # Router setup
     │   ├── main.jsx
-    │   └── index.css
-    ├── tailwind.config.js
+    │   └── index.css             # Custom animations & utilities
+    ├── tailwind.config.js        # Extended animations & theme
     ├── postcss.config.js
     ├── index.html
     └── package.json
@@ -92,38 +120,38 @@ DETTROIN-INT---SchoolWebsite/
 
 ---
 
-## Setup & Running Instructions
+## Setup & Running
 
-### 1. Prerequisites
-- Node.js (v18+ recommended)
-- MongoDB installed locally and running (on default port `27017`)
+### Prerequisites
+- Node.js v18+
+- MongoDB running locally on port `27017`
 
-### 2. Backend Installation & Startup
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-2. Install packages:
-   ```bash
-   npm install
-   ```
-3. Start the Express server:
-   ```bash
-   npm start
-   ```
-   *The server runs on port `5000` and automatically seeds initial accounts.*
+### Backend
+```bash
+cd backend
+npm install
+npm start
+# Server runs on port 5000, auto-seeds accounts
+```
 
-### 3. Frontend Installation & Startup
-1. Navigate to the frontend directory:
-   ```bash
-   cd ../frontend
-   ```
-2. Install packages:
-   ```bash
-   npm install --legacy-peer-deps
-   ```
-3. Run Vite dev server:
-   ```bash
-   npm run dev
-   ```
-   *Open browser at `http://localhost:5173` to interact with the web app.*
+### Frontend
+```bash
+cd frontend
+npm install --legacy-peer-deps
+npm run dev
+# Open http://localhost:5173
+```
+
+### Default Accounts (Auto-Seeded)
+
+| Role | Email | Password |
+|---|---|---|
+| Admin | admin@vasantvalley.edu | admin123 |
+| Teacher | teacher@vasantvalley.edu | teacher123 |
+| Student | student@vasantvalley.edu | student123 |
+
+---
+
+## License
+
+This project was built as part of the DETTROIN internship program.
