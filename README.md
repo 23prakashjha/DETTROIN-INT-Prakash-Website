@@ -10,7 +10,7 @@ A modern, responsive, and feature-rich redesign of the **Vasant Valley School** 
 - **Intern ID:** DETTROIN-INT-2026-07
 - **GitHub Username:** 23prakashjha
 - **Repository:** `DETTROIN-INT-Prakash-Website`
-- **Live Demo:** [View Deployment](https://github.com/23prakashjha/DETTROIN-INT-Prakash-Website)
+- **Live Demo:** https://dettroin-int-prakash-website.vercel.app/
 - **Selected Website:** [Vasant Valley School](https://www.vasantvalley.org/)
 
 ---
