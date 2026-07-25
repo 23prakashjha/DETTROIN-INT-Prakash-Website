@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { GraduationCap, Menu, X, LogOut, User, ChevronDown } from 'lucide-react';
+import { GraduationCap, Menu, X, LogOut, User, ChevronDown, BookOpen, ClipboardList, ShieldCheck } from 'lucide-react';
 
 const Navbar = ({ user, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -178,7 +178,15 @@ const Navbar = ({ user, onLogout }) => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center space-x-3">
+          <div className="lg:hidden flex items-center space-x-2">
+            {!user && (
+              <Link
+                to="/portal"
+                className="bg-gradient-to-r from-brand-red-600 to-brand-red-800 hover:from-brand-red-500 hover:to-brand-red-700 text-white font-semibold text-xs px-4 py-2 rounded-lg shadow-lg shadow-brand-red-950/50 transition-all duration-300 border border-brand-red-500/20 btn-press"
+              >
+                Portal Login
+              </Link>
+            )}
             {user && (
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-red-500 to-brand-red-700 flex items-center justify-center">
                 <User className="h-4 w-4 text-brand-gold-100" />
@@ -271,6 +279,49 @@ const Navbar = ({ user, onLogout }) => {
             </Link>
           )}
 
+          {/* Role-based quick links when logged in */}
+          {user && (
+            <div className="px-4 py-1">
+              <span className="text-[10px] uppercase font-bold text-gray-500 tracking-wider">Quick Access</span>
+            </div>
+          )}
+          {user && user.role === 'student' && (
+            <>
+              <Link to="/dashboard" className="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm text-gray-400 hover:bg-white/5 hover:text-white transition-all" role="menuitem" onClick={() => setIsOpen(false)}>
+                <BookOpen className="h-4 w-4 text-brand-gold-500" />
+                <span>My Grades</span>
+              </Link>
+              <Link to="/dashboard" className="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm text-gray-400 hover:bg-white/5 hover:text-white transition-all" role="menuitem" onClick={() => setIsOpen(false)}>
+                <ClipboardList className="h-4 w-4 text-brand-gold-500" />
+                <span>Notice Board</span>
+              </Link>
+            </>
+          )}
+          {user && user.role === 'teacher' && (
+            <>
+              <Link to="/dashboard" className="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm text-gray-400 hover:bg-white/5 hover:text-white transition-all" role="menuitem" onClick={() => setIsOpen(false)}>
+                <ClipboardList className="h-4 w-4 text-brand-gold-500" />
+                <span>Publish Grades</span>
+              </Link>
+              <Link to="/dashboard" className="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm text-gray-400 hover:bg-white/5 hover:text-white transition-all" role="menuitem" onClick={() => setIsOpen(false)}>
+                <BookOpen className="h-4 w-4 text-brand-gold-500" />
+                <span>Manage Notices</span>
+              </Link>
+            </>
+          )}
+          {user && user.role === 'admin' && (
+            <>
+              <Link to="/dashboard" className="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm text-gray-400 hover:bg-white/5 hover:text-white transition-all" role="menuitem" onClick={() => setIsOpen(false)}>
+                <ShieldCheck className="h-4 w-4 text-brand-gold-500" />
+                <span>Manage Admissions</span>
+              </Link>
+              <Link to="/dashboard" className="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm text-gray-400 hover:bg-white/5 hover:text-white transition-all" role="menuitem" onClick={() => setIsOpen(false)}>
+                <ClipboardList className="h-4 w-4 text-brand-gold-500" />
+                <span>Database Stats</span>
+              </Link>
+            </>
+          )}
+
           {/* Action buttons */}
           <div className="border-t border-white/5 pt-4 mt-3 space-y-3 px-2">
             {user ? (
@@ -287,13 +338,42 @@ const Navbar = ({ user, onLogout }) => {
                 <span>Log Out</span>
               </button>
             ) : (
-              <Link
-                to="/portal"
-                className="w-full block text-center bg-gradient-to-r from-brand-red-600 to-brand-red-800 text-white font-semibold py-3 rounded-xl shadow-lg shadow-brand-red-950 btn-press"
-                onClick={() => setIsOpen(false)}
-              >
-                Portal Login
-              </Link>
+              <>
+                <Link
+                  to="/portal"
+                  className="w-full block text-center bg-gradient-to-r from-brand-red-600 to-brand-red-800 text-white font-semibold py-3 rounded-xl shadow-lg shadow-brand-red-950 btn-press"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Portal Login
+                </Link>
+                <div className="space-y-2 pt-2">
+                  <p className="text-[10px] uppercase font-bold text-gray-500 tracking-wider text-center">Quick Demo Login</p>
+                  <div className="grid grid-cols-3 gap-2">
+                    <Link
+                      to="/portal"
+                      onClick={() => setIsOpen(false)}
+                      className="bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg py-2.5 text-[11px] text-gray-300 font-semibold transition-colors text-center"
+                    >
+                      Student
+                    </Link>
+                    <Link
+                      to="/portal"
+                      onClick={() => setIsOpen(false)}
+                      className="bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg py-2.5 text-[11px] text-gray-300 font-semibold transition-colors text-center"
+                    >
+                      Teacher
+                    </Link>
+                    <Link
+                      to="/portal"
+                      onClick={() => setIsOpen(false)}
+                      className="bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg py-2.5 text-[11px] text-gray-300 font-semibold transition-colors text-center"
+                    >
+                      Admin
+                    </Link>
+                  </div>
+                  <p className="text-[9px] text-gray-500 text-center">Password: <code className="bg-white/5 px-1 rounded text-gray-400">password123</code></p>
+                </div>
+              </>
             )}
           </div>
         </div>
