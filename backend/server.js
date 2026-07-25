@@ -31,8 +31,8 @@ app.use('/api/notices', noticesRoutes);
 app.use('/api/grades', gradesRoutes);
 
 // MongoDB Connection with fallback/warning
-const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/vasant_valley';
-console.log('Connecting to MongoDB at:', mongoURI);
+const mongoURI = process.env.MONGO_URI;
+console.log('Connecting to MongoDB Atlas...');
 
 mongoose.connect(mongoURI)
   .then(() => {
